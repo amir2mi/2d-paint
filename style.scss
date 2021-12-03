@@ -1,0 +1,131 @@
+@import url(https://raw.githack.com/amir2mi/FlatifyCSS/master/dist/css/flatify-min.css);
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+
+html, body {
+    margin: 0;
+ }
+
+#draw{
+	cursor: pointer;
+}
+
+.intro-text{
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: fit-content;
+	height: fit-content;
+	margin: auto !important;
+	font-size: 2em;
+	opacity: 0.35;
+	animation: flatify-heart ease 1.8s infinite;
+}
+
+.toolbar{
+	position: fixed;
+	top: 0.64em;
+	left: 0.64em;
+	width: 7.81em;
+	height: auto;
+	padding: 0.64em;
+	background: var(--flatify__bg-color-dark);
+	border: 0.18em solid var(--flatify__bg-color-darker);
+	border-radius: 1em;
+	transition: transform ease 0.3s 1s;
+	
+	&:not(.show){
+		transform: translateX(-100%);
+	}
+	
+	&:hover,
+	&:focus,
+	&:focus-within{
+		transition-delay: 0.2s;
+		transform: translateX(0);
+		
+		.show-toolbar:after{
+			transform: rotate(90deg);
+		}
+	}
+	
+	.show-toolbar{
+		position: absolute;
+		top: 1em;
+		right: -1.5em;
+		width: 1.5em;
+		height: 2em;
+		border: 0.18em solid var(--flatify__bg-color-darker);
+		border-radius: 0 0.5em 0.5em 0;
+	}
+	
+	.toolbar-buttons{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.75em 0.5em;
+		
+		.button{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-basis: calc(50% - 0.5em);
+			height: 2.5em;
+			padding: 0.5em 0;
+			margin: 0;
+			
+			svg{
+				width: 1.5em;
+				height: 1.5em;
+				fill: var(--flatify__txt-color-light);
+			}
+		}
+	}
+}
+
+.brush-size-indicator{
+	width: 1.25em;
+	height: 1.25em;
+	background: var(--flatify__txt-color-light);
+	border-radius: 3.14em;
+	transition: transform ease 0.3s
+}
+
+input[type="color"]{
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.brush-eraser-toggle{
+	.brush-icon,
+	.eraser-icon{
+		display: none;
+	}
+	
+	&.is-brush{
+		.brush-icon{
+			display: block;
+			animation: flatify-blow-in ease 0.2s;
+		}
+	}
+	&:not(.is-brush){
+		.eraser-icon{
+			display: block;
+			animation: flatify-blow-in ease 0.2s;
+		}
+	}
+}
+
+.footer-link{
+	font-size: 0.75em;
+	position: absolute;
+	bottom: 0.5em;
+	left: 0.5em;
+	
+	img{
+		width: 1.75em;
+		margin-right: 0.32em;
+	}
+}
